@@ -1,0 +1,208 @@
+<h1>Canvas trong HTML5</h1>
+
+<h2>I. Một số hình vẽ cơ bản</h2>
+<h3>1. Đoạn thẳng(Line)</h3>
+<canvas id="myCanvas1" width="200" height="100" style="border:1px solid #c3c3c3;">
+</canvas>
+
+<script>
+var canvas1 = document.getElementById("myCanvas1");
+var context1 = canvas1.getContext("2d");
+context1.moveTo(0,0);
+context1.lineTo(200,100);
+context1.stroke();
+</script>
+
+<h3>2. Hình chữ nhật(Rectangle)</h3>
+<canvas id="myCanvas2" width="250" height="120" style="border:1px solid #c3c3c3;">
+</canvas>
+
+<script>
+var canvas2 = document.getElementById("myCanvas2");
+var context2 = canvas2.getContext("2d");
+context2.fillRect(25,25,50,50);
+context2.clearRect(35,35,30,30);
+context2.strokeRect(100,45,50,50);
+context2.fillRect(170,25,50,50);
+</script>
+
+<h3>3. Hình tròn(Circle)</h3>
+<canvas id="myCanvas3" width="200" height="100" style="border:1px solid #c3c3c3;">
+</canvas>
+
+<script>
+var canvas3 = document.getElementById("myCanvas3");
+var context3 = canvas3.getContext("2d");
+context3.beginPath();
+context3.arc(50,50,35,0,2*Math.PI);
+context3.stroke();
+</script>
+
+<br>- hình cung<br>
+<canvas id="myCanvas3_1" width="200" height="100" style="border:1px solid #c3c3c3;">
+</canvas>
+
+<script>
+var canvas3_1 = document.getElementById("myCanvas3_1");
+var context3_1 = canvas3_1.getContext("2d");
+context3_1.beginPath();
+context3_1.arc(50,50,35,0.2*Math.PI,1.5*Math.PI);
+context3_1.stroke();
+</script>
+
+<h2>II. Một số phép biến đổi</h2>
+<h3>1. translate()</h3>
+- trước khi translate():<br>
+<canvas id="myCanvas4" width="200" height="100" style="border:1px solid #c3c3c3;">
+</canvas><br>
+
+<script>
+var canvas4 = document.getElementById("myCanvas4");
+var context4 = canvas4.getContext("2d");
+context4.fillStyle="blue";
+context4.fillRect(0,0,100,50);
+</script>
+- sau khi translate():
+<canvas id="myCanvas4_1" width="200" height="100" style="border:1px solid #c3c3c3;">
+</canvas>
+
+<script>
+var canvas4_1 = document.getElementById("myCanvas4_1");
+var context4_1 = canvas4_1.getContext("2d");
+context4_1.translate(0, canvas4_1.height/2);
+context4_1.fillStyle="blue";
+context4_1.fillRect(0,0,100,50);
+</script>
+
+<h3>2. scale()</h3>
+- trước khi scale():<br>
+<canvas id="myCanvas5" width="200" height="100" style="border:1px solid #c3c3c3;">
+</canvas><br>
+
+<script>
+var canvas5 = document.getElementById("myCanvas5");
+var context5 = canvas5.getContext("2d");
+context5.fillStyle="pink";
+context5.fillRect(0,0,100,50);
+</script>
+- sau khi scale():
+<canvas id="myCanvas5_1" width="200" height="100" style="border:1px solid #c3c3c3;">
+</canvas>
+
+<script>
+var canvas5_1 = document.getElementById("myCanvas5_1");
+var context5_1 = canvas5_1.getContext("2d");
+context5_1.scale(2,0.5);
+context5_1.fillStyle="pink";
+context5_1.fillRect(0,0,100,50);
+</script>
+
+<h3>3. rotate()</h3>
+- trước khi rotate():<br>
+<canvas id="myCanvas6" width="200" height="110" style="border:1px solid #c3c3c3;">
+</canvas><br>
+
+<script>
+var canvas6 = document.getElementById("myCanvas6");
+var context6 = canvas6.getContext("2d");
+context6.fillStyle="orange";
+context6.fillRect(0,0,100,50);
+</script>
+- sau khi rotate():
+<canvas id="myCanvas6_1" width="200" height="110" style="border:1px solid #c3c3c3;">
+</canvas>
+
+<script>
+var canvas6_1 = document.getElementById("myCanvas6_1");
+var context6_1 = canvas6_1.getContext("2d");
+context6_1.rotate(-Math.PI/4);
+context6_1.fillStyle="orange";
+context6_1.fillRect(-30,70,100,50);
+</script>
+
+<h2>III. Gradients</h2>
+<h3>1. createLinearGradient()</h3>
+<canvas id="myCanvas7" width="200" height="100" style="border:1px solid #c3c3c3;">
+</canvas>
+
+<script>
+var canvas7 = document.getElementById("myCanvas7");
+var context7 = canvas7.getContext("2d");
+var gradient7 = context7.createLinearGradient(0,0,200,0);
+gradient7.addColorStop(0,"red");
+gradient7.addColorStop(1,"white");
+context7.fillStyle = gradient7;
+context7.fillRect(5,5,150,90);
+</script>
+
+<h3>2. createRadialGradient()</h3>
+<canvas id="myCanvas8" width="200" height="100" style="border:1px solid #c3c3c3;">
+</canvas>
+
+<script>
+var canvas8 = document.getElementById("myCanvas8");
+var context8 = canvas8.getContext("2d");
+var gradient8 = context8.createRadialGradient(75,50,10,90,60,100);
+gradient8.addColorStop(0,"yellow");
+gradient8.addColorStop(1,"green");
+context8.fillStyle = gradient8;
+context8.fillRect(5,5,150,90);
+</script>
+
+<h2>IV. Text</h2>
+<h3>1. strokeText()</h3>
+<canvas id="myCanvas9" width="200" height="100" style="border:1px solid #c3c3c3;">
+</canvas>
+
+<script>
+var canvas9 = document.getElementById("myCanvas9");
+var context9 = canvas9.getContext("2d");
+context9.font = "30px Arial";
+context9.strokeText("March Vu",10,50);
+</script>
+
+<h3>2. fillText()</h3>
+<canvas id="myCanvas10" width="200" height="100" style="border:1px solid #c3c3c3;">
+</canvas>
+
+<script>
+var canvas10 = document.getElementById("myCanvas10");
+var context10 = canvas10.getContext("2d");
+context10.font = "30px Arial";
+context10.fillText("March Vu",10,50);
+</script>
+
+<h2>V. Image</h2>
+<p>Image</p>
+<%= image_tag "example.jpg", id: "image"%>
+
+<h3>1. drawImage(image, x, y)</h3>
+<canvas id="myCanvas11" width="320" height="170" style="border:1px solid #d3d3d3;">
+</canvas>
+
+<h3>2. drawImage(image, x, y, w, h)</h3>
+<canvas id="myCanvas12" width="320" height="170" style="border:1px solid #d3d3d3;">
+</canvas>
+
+<h3>2. drawImage(image, x1, y1, w1, h1, x2, y2, w2, h2)</h3>
+<canvas id="myCanvas13" width="320" height="170" style="border:1px solid #d3d3d3;">
+</canvas>
+
+<script>
+window.onload = function() {
+  var canvas11 = document.getElementById("myCanvas11");
+  var context11 = canvas11.getContext("2d");
+  var img11 = document.getElementById("image");
+  context11.drawImage(img11, 20, 20);
+  var canvas12 = document.getElementById("myCanvas12");
+  var context12 = canvas12.getContext("2d");
+  var img12 = document.getElementById("image");
+  context12.drawImage(img12, 10, 10, 200, 120);
+  var canvas13 = document.getElementById("myCanvas13");
+  var context13 = canvas13.getContext("2d");
+  var img13 = document.getElementById("image");
+  context13.drawImage(img13, 150, 30, 75, 75, 10, 10, 100, 100);
+}
+</script>
+
+
